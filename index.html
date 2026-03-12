@@ -13,70 +13,72 @@
     <div class="particles"></div>
     <canvas id="spark-canvas"></canvas>
 
-    <div class="invite-container">
-        <div class="invite-poster">
-            <!-- Top Logos -->
-            <div class="logos-header">
-                <div class="logo-box" id="kpil-container">
-                    <img src="assets/kpil_logo_new.png" alt="KPIL Logo" class="logo-img">
-                </div>
-                <div class="logo-box" id="summit-container">
-                    <div class="summit-svg-container">
-                        <svg viewBox="0 0 100 100" class="logo-svg">
-                            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#summit-grad)" stroke-width="2"/>
-                            <path d="M50 20 L40 50 L50 50 L45 80 L65 45 L55 45 Z" fill="#F4FF81" />
-                            <defs>
-                                <linearGradient id="summit-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#F4FF81;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
+    <div class="slider-container">
+        <div class="slider" id="main-slider">
+            <!-- Slide 1: Cover Card -->
+            <section class="slide cover-slide">
+                <div class="card-envelope">
+                    <div class="logos-header">
+                        <div class="logo-box">
+                             <img src="assets/kpil_logo_new.png" alt="KPIL" class="logo-img">
+                        </div>
+                        <div class="logo-box">
+                             <svg viewBox="0 0 100 100" class="logo-svg">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#00E5FF" stroke-width="2"/>
+                                <path d="M50 20 L40 50 L50 50 L45 80 L65 45 L55 45 Z" fill="#F4FF81" />
+                            </svg>
+                        </div>
                     </div>
+                    <p class="welcome">WELCOME TO THE FUTURE</p>
+                    <h1 class="hero-title">BHARAT ELECTRICAL<br>SUMMIT 2026</h1>
+                    <button class="open-btn" onclick="nextSlide()">
+                        OPEN INVITATION
+                        <span class="btn-glow"></span>
+                    </button>
+                    <p class="swipe-hint">or swipe left to explore</p>
                 </div>
-                <div class="energy-line"></div>
-            </div>
+            </section>
 
-            <!-- Title -->
-            <h1 class="main-title">BHARAT ELECTRICAL<br>SUMMIT 2026</h1>
+            <!-- Slide 2: Invitation Details -->
+            <section class="slide details-slide">
+                <div class="details-card">
+                    <button class="back-btn" onclick="prevSlide()">← Back</button>
+                    <h2 class="section-title">You are Cordially Invited</h2>
+                    
+                    <div class="main-info">
+                        <div class="date-highlight">
+                            <span class="month">MARCH 2026</span>
+                            <span class="days">19 — 22</span>
+                        </div>
+                        
+                        <div class="location-box">
+                            <span class="location-top">VENUE</span>
+                            <span class="location-main">BHARAT MANDAPAM</span>
+                            <span class="location-sub">NEW DELHI</span>
+                        </div>
+                    </div>
 
-            <!-- Invitation Text -->
-            <p class="subtitle">YOU ARE CORDIALLY INVITED</p>
+                    <div class="stall-info">
+                        <div class="stall-item">
+                            <span class="s-label">HALL NO</span>
+                            <span class="s-value">___</span>
+                        </div>
+                        <div class="stall-item">
+                            <span class="s-label">STALL NO</span>
+                            <span class="s-value">___</span>
+                        </div>
+                    </div>
 
-            <!-- Date Highlight -->
-            <div class="date-box">
-                19 March – 22 March 2026
-            </div>
-
-            <!-- Hall + Stall Layout -->
-            <div class="event-details">
-                <div class="detail-item">
-                    <span class="label">Hall No</span>
-                    <span class="value">___</span>
+                    <p class="footer-branding">KPIL | BHARAT ELECTRICAL SUMMIT TEAM</p>
                 </div>
-                <div class="detail-item">
-                    <span class="label">Stall No</span>
-                    <span class="value">___</span>
-                </div>
-            </div>
-
-            <!-- Floating Illustration Elements (Small icons) -->
-            <div class="floating-icons">
-                <div class="icon-wrap helmet" style="top: 15%; left: 8%;">
-                    <svg viewBox="0 0 100 100" class="icon"><path fill="#00E5FF" d="M10,60 Q10,10 50,10 Q90,10 90,60 L95,65 L10,65 Z" /></svg>
-                </div>
-                <div class="icon-wrap tower" style="bottom: 12%; right: 10%;">
-                    <svg viewBox="0 0 100 100" class="icon"><path fill="none" stroke="#00E5FF" stroke-width="3" d="M20,100 L50,10 L80,100 M20,80 L80,80 M35,50 L65,50" /></svg>
-                </div>
-                <div class="icon-wrap bolt" style="top: 35%; right: 5%;">
-                    <svg viewBox="0 0 100 100" class="icon"><path fill="#F4FF81" d="M60,10 L30,50 L50,50 L40,90 L70,40 L50,40 Z" /></svg>
-                </div>
-            </div>
-
-            <footer class="poster-footer">
-                @BHARAT ELECTRICAL SUMMIT 2026
-            </footer>
+            </section>
         </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="floating-icons">
+        <div class="icon-wrap helmet"><svg viewBox="0 0 100 100" class="icon"><path fill="#00E5FF" d="M10,60 Q10,10 50,10 Q90,10 90,60 L95,65 L10,65 Z" /></svg></div>
+        <div class="icon-wrap tower"><svg viewBox="0 0 100 100" class="icon"><path fill="none" stroke="#00E5FF" stroke-width="2" d="M20,100 L50,10 L80,100 M20,80 L80,80 M35,50 L65,50" /></svg></div>
     </div>
 
     <script src="script.js"></script>
