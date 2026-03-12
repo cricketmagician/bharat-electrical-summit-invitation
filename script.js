@@ -1,20 +1,14 @@
 const canvas = document.getElementById('spark-canvas');
 const ctx = canvas.getContext('2d');
-const slider = document.getElementById('main-slider');
 
 let width, height;
 let particles = [];
 let sparks = [];
-let currentSlide = 0;
-
-// Swipe Support Variables
-let touchStartX = 0;
-let touchEndX = 0;
+let animationActive = true;
 
 function init() {
     resize();
     createParticles();
-    initTouchEvents();
     animate();
 }
 
@@ -25,36 +19,23 @@ function resize() {
 
 window.addEventListener('resize', resize);
 
-// Slide Navigation
-function nextSlide() {
-    currentSlide = 1;
-    slider.style.transform = `translateX(-100vw)`;
-}
+// REVEAL ANIMATION LOGIC
+function openInvite() {
+    const cover = document.getElementById('cover');
+    const invite = document.getElementById('invite');
 
-function prevSlide() {
-    currentSlide = 0;
-    slider.style.transform = `translateX(0vw)`;
-}
+    cover.classList.add('hide');
+    
+    setTimeout(() => {
+        invite.classList.add('show');
+        // Optionally slow down particles or change mood after reveal
+    }, 400);
 
-// Touch/Swipe Gestures
-function initTouchEvents() {
-    slider.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, {passive: true});
-
-    slider.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, {passive: true});
-}
-
-function handleSwipe() {
-    const threshold = 50;
-    if (touchStartX - touchEndX > threshold) {
-        nextSlide(); // Swipe left
-    } else if (touchEndX - touchStartX > threshold) {
-        prevSlide(); // Swipe right
-    }
+    // Stop sparks after reveal to focus on details
+    setTimeout(() => {
+        animationActive = false;
+        ctx.clearRect(0, 0, width, height);
+    }, 1500);
 }
 
 class Particle {
@@ -64,11 +45,11 @@ class Particle {
     reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 1.5 + 0.5;
+        this.size = Math.random() * 1.2 + 0.3;
         this.color = Math.random() > 0.5 ? '#00E5FF' : '#F4FF81'; 
-        this.speedX = (Math.random() - 0.5) * 0.4;
-        this.speedY = (Math.random() - 0.5) * 0.4;
-        this.opacity = Math.random() * 0.3 + 0.1;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.opacity = Math.random() * 0.3 + 0.05;
     }
     update() {
         this.x += this.speedX;
@@ -86,22 +67,20 @@ class Particle {
 
 function createParticles() {
     particles = [];
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 50; i++) {
         particles.push(new Particle());
     }
 }
 
-// Electric Spark
 function drawSpark() {
-    // Only logic for Slide 1 (Cover) where logos are
-    if (currentSlide !== 0) return;
+    if (!animationActive) return;
 
-    // Relative to viewport is fine here since it's full screen slide
-    const logos = document.querySelectorAll('.logo-box');
-    if (logos.length < 2) return;
+    const kpil = document.getElementById('logo-kpil');
+    const summit = document.getElementById('logo-summit');
+    if (!kpil || !summit) return;
 
-    const b1 = logos[0].getBoundingClientRect();
-    const b2 = logos[1].getBoundingClientRect();
+    const b1 = kpil.getBoundingClientRect();
+    const b2 = summit.getBoundingClientRect();
 
     const x1 = b1.left + b1.width / 2;
     const y1 = b1.top + b1.height / 2;
@@ -110,7 +89,7 @@ function drawSpark() {
 
     if (Math.random() > 0.94) {
         sparks.push({
-            timer: 10,
+            timer: 8,
             points: createLightningPoints(x1, y1, x2, y2)
         });
     }
@@ -122,14 +101,10 @@ function drawSpark() {
         ctx.lineTo(x2, y2);
         
         ctx.strokeStyle = '#00E5FF';
-        ctx.lineWidth = 1.5;
-        ctx.shadowBlur = 10;
+        ctx.lineWidth = 1.2;
+        ctx.shadowBlur = 8;
         ctx.shadowColor = '#00E5FF';
-        ctx.globalAlpha = spark.timer / 10;
-        ctx.stroke();
-
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 0.5;
+        ctx.globalAlpha = spark.timer / 8;
         ctx.stroke();
 
         spark.timer--;
@@ -139,27 +114,36 @@ function drawSpark() {
 
 function createLightningPoints(x1, y1, x2, y2) {
     const points = [];
-    const segments = 6;
+    const segments = 5;
     const dx = (x2 - x1) / segments;
     const dy = (y2 - y1) / segments;
 
     for (let i = 1; i < segments; i++) {
         points.push({
-            x: x1 + dx * i + (Math.random() - 0.5) * 40,
-            y: y1 + dy * i + (Math.random() - 0.5) * 40
+            x: x1 + dx * i + (Math.random() - 0.5) * 30,
+            y: y1 + dy * i + (Math.random() - 0.5) * 30
         });
     }
     return points;
 }
 
 function animate() {
-    ctx.clearRect(0, 0, width, height);
+    if (!animationActive && sparks.length === 0) {
+        // Just draw particles for atmosphere
+         ctx.clearRect(0, 0, width, height);
+         particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animate);
+        return;
+    }
 
+    ctx.clearRect(0, 0, width, height);
     particles.forEach(p => {
         p.update();
         p.draw();
     });
-
     drawSpark();
     requestAnimationFrame(animate);
 }

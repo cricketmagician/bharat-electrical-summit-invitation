@@ -13,72 +13,64 @@
     <div class="particles"></div>
     <canvas id="spark-canvas"></canvas>
 
-    <div class="slider-container">
-        <div class="slider" id="main-slider">
-            <!-- Slide 1: Cover Card -->
-            <section class="slide cover-slide">
-                <div class="card-envelope">
-                    <div class="logos-header">
-                        <div class="logo-box">
-                             <img src="assets/kpil_logo_new.png" alt="KPIL" class="logo-img">
-                        </div>
-                        <div class="logo-box">
-                             <svg viewBox="0 0 100 100" class="logo-svg">
-                                <circle cx="50" cy="50" r="45" fill="none" stroke="#00E5FF" stroke-width="2"/>
-                                <path d="M50 20 L40 50 L50 50 L45 80 L65 45 L55 45 Z" fill="#F4FF81" />
-                            </svg>
-                        </div>
+    <div class="wrapper">
+        <!-- COVER PAGE -->
+        <section class="cover" id="cover">
+            <div class="card">
+                <div class="logos-header">
+                    <div class="logo-box" id="logo-kpil">
+                        <img src="assets/kpil_logo_new.png" alt="KPIL" class="logo-img">
                     </div>
-                    <p class="welcome">WELCOME TO THE FUTURE</p>
-                    <h1 class="hero-title">BHARAT ELECTRICAL<br>SUMMIT 2026</h1>
-                    <button class="open-btn" onclick="nextSlide()">
-                        OPEN INVITATION
-                        <span class="btn-glow"></span>
-                    </button>
-                    <p class="swipe-hint">or swipe left to explore</p>
+                    <div class="logo-box" id="logo-summit">
+                        <svg viewBox="0 0 100 100" class="logo-svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#00E5FF" stroke-width="2"/>
+                            <path d="M50 20 L40 50 L50 50 L45 80 L65 45 L55 45 Z" fill="#F4FF81" />
+                        </svg>
+                    </div>
                 </div>
-            </section>
+                <p class="eyebrow">A SYNERGY OF POWER</p>
+                <h1 class="hero-title">BHARAT ELECTRICAL<br>SUMMIT 2026</h1>
+                <button class="reveal-btn" onclick="openInvite()">
+                    OPEN INVITATION
+                    <span class="btn-glow"></span>
+                </button>
+            </div>
+        </section>
 
-            <!-- Slide 2: Invitation Details -->
-            <section class="slide details-slide">
-                <div class="details-card">
-                    <button class="back-btn" onclick="prevSlide()">← Back</button>
-                    <h2 class="section-title">You are Cordially Invited</h2>
-                    
-                    <div class="main-info">
-                        <div class="date-highlight">
-                            <span class="month">MARCH 2026</span>
-                            <span class="days">19 — 22</span>
-                        </div>
-                        
-                        <div class="location-box">
-                            <span class="location-top">VENUE</span>
-                            <span class="location-main">BHARAT MANDAPAM</span>
-                            <span class="location-sub">NEW DELHI</span>
-                        </div>
+        <!-- INVITATION DETAILS PAGE (Reveal below) -->
+        <section class="invite" id="invite">
+            <div class="invite-content">
+                <h2 class="reveal-heading">You Are Cordially Invited</h2>
+                
+                <div class="date-container">
+                    <div class="date-badge">
+                        <span class="date-label">SAVE THE DATE</span>
+                        <span class="date-text">19 MARCH — 22 MARCH 2026</span>
                     </div>
-
-                    <div class="stall-info">
-                        <div class="stall-item">
-                            <span class="s-label">HALL NO</span>
-                            <span class="s-value">___</span>
-                        </div>
-                        <div class="stall-item">
-                            <span class="s-label">STALL NO</span>
-                            <span class="s-value">___</span>
-                        </div>
-                    </div>
-
-                    <p class="footer-branding">KPIL | BHARAT ELECTRICAL SUMMIT TEAM</p>
                 </div>
-            </section>
-        </div>
-    </div>
 
-    <!-- Background Elements -->
-    <div class="floating-icons">
-        <div class="icon-wrap helmet"><svg viewBox="0 0 100 100" class="icon"><path fill="#00E5FF" d="M10,60 Q10,10 50,10 Q90,10 90,60 L95,65 L10,65 Z" /></svg></div>
-        <div class="icon-wrap tower"><svg viewBox="0 0 100 100" class="icon"><path fill="none" stroke="#00E5FF" stroke-width="2" d="M20,100 L50,10 L80,100 M20,80 L80,80 M35,50 L65,50" /></svg></div>
+                <div class="venue-info">
+                    <span class="venue-label">VENUE</span>
+                    <h3 class="venue-name">BHARAT MANDAPAM</h3>
+                    <p class="venue-location">Pragati Maidan, New Delhi</p>
+                </div>
+
+                <div class="stall-details">
+                    <div class="stall-badge">
+                        <span class="s-label">HALL NO</span>
+                        <span class="s-value">___</span>
+                    </div>
+                    <div class="stall-badge">
+                        <span class="s-label">STALL NO</span>
+                        <span class="s-value">___</span>
+                    </div>
+                </div>
+
+                <footer class="invite-footer">
+                    <p>BHARAT ELECTRICAL SUMMIT 2026 | HOSTED BY KPIL</p>
+                </footer>
+            </div>
+        </section>
     </div>
 
     <script src="script.js"></script>
