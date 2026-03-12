@@ -10,101 +10,103 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="card-container">
-        <!-- CSS Particles Overlay -->
-        <div class="particles"></div>
-        
-        <!-- Canvas for Dynamic Spark -->
-        <canvas id="spark-canvas"></canvas>
+    <div class="scroll-container">
+        <div class="card-container">
+            <!-- CSS Particles Overlay -->
+            <div class="particles"></div>
+            
+            <!-- Canvas for Dynamic Spark -->
+            <canvas id="spark-canvas"></canvas>
 
-        <!-- Top Logos -->
-        <header class="logos-header">
-            <div class="logo-box" id="kpil-container">
-                <img src="assets/premium_kpil.png" alt="KPIL Logo" class="premium-logo">
-            </div>
-            <div class="logo-box" id="summit-container">
-                <div class="summit-logo-premium">
-                    <svg viewBox="0 0 100 100" class="logo-svg">
-                        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#summit-grad)" stroke-width="2"/>
-                        <path d="M50 20 L40 50 L50 50 L45 80 L65 45 L55 45 Z" fill="#F4FF81" />
-                        <defs>
-                            <linearGradient id="summit-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#F4FF81;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    <div class="summit-text">
-                        <span class="top">BHARAT</span>
-                        <span class="bot">SUMMIT</span>
+            <!-- Top Logos -->
+            <header class="logos-header reveal">
+                <div class="logo-box" id="kpil-container">
+                    <img src="assets/kpil_logo_new.png" alt="KPIL Logo" class="premium-logo new-logo">
+                </div>
+                <div class="logo-box" id="summit-container">
+                    <div class="summit-logo-premium">
+                        <svg viewBox="0 0 100 100" class="logo-svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#summit-grad)" stroke-width="2"/>
+                            <path d="M50 20 L40 50 L50 50 L45 80 L65 45 L55 45 Z" fill="#F4FF81" />
+                            <defs>
+                                <linearGradient id="summit-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#F4FF81;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="summit-text">
+                            <span class="top">BHARAT</span>
+                            <span class="bot">SUMMIT</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Energy Connection Line -->
-            <div class="energy-line"></div>
-        </header>
+                <!-- Energy Connection Line -->
+                <div class="energy-line"></div>
+            </header>
 
-        <!-- Floating Elements -->
-        <div class="floating-elements-container">
-            <!-- These will be SVG based for clean look -->
-            <div class="floating-item helmet" style="top: 20%; left: 10%; animation-delay: 0s;">
-                <svg viewBox="0 0 100 100" class="element-svg">
-                    <path fill="#00E5FF" d="M10,60 Q10,10 50,10 Q90,10 90,60 L95,65 L10,65 Z" />
-                    <rect x="50" y="20" width="2" height="40" fill="#0A192F" opacity="0.2"/>
-                    <circle cx="75" cy="45" r="5" fill="#F4FF81" />
-                </svg>
+            <!-- Floating Elements -->
+            <div class="floating-elements-container">
+                <!-- These will be SVG based for clean look -->
+                <div class="floating-item helmet reveal" style="top: 20%; left: 10%; animation-delay: 0s;">
+                    <svg viewBox="0 0 100 100" class="element-svg">
+                        <path fill="#00E5FF" d="M10,60 Q10,10 50,10 Q90,10 90,60 L95,65 L10,65 Z" />
+                        <rect x="50" y="20" width="2" height="40" fill="#0A192F" opacity="0.2"/>
+                        <circle cx="75" cy="45" r="5" fill="#F4FF81" />
+                    </svg>
+                </div>
+                <div class="floating-item tower reveal" style="top: 70%; right: 15%; animation-delay: -2s;">
+                    <svg viewBox="0 0 100 100" class="element-svg">
+                        <path fill="none" stroke="#00E5FF" stroke-width="2" d="M20,100 L50,10 L80,100 M20,80 L80,80 M35,50 L65,50 M45,25 L55,25" />
+                        <path fill="none" stroke="#F4FF81" stroke-width="1.5" d="M10,40 Q50,60 90,40 M10,60 Q50,80 90,60" />
+                    </svg>
+                </div>
+                <div class="floating-item component reveal" style="top: 80%; left: 20%; animation-delay: -4s;">
+                    <svg viewBox="0 0 100 100" class="element-svg">
+                       <rect x="30" y="40" width="40" height="20" rx="5" fill="#00E5FF" />
+                       <rect x="10" y="48" width="20" height="4" fill="#F4FF81" />
+                       <rect x="70" y="48" width="20" height="4" fill="#F4FF81" />
+                       <rect x="35" y="40" width="5" height="20" fill="#0A192F" opacity="0.3" />
+                       <rect x="60" y="40" width="5" height="20" fill="#0A192F" opacity="0.3" />
+                    </svg>
+                </div>
+                <div class="floating-item bolt reveal" style="top: 30%; right: 10%; animation-delay: -1s;">
+                    <svg viewBox="0 0 100 100" class="element-svg bolt-svg">
+                        <path fill="#F4FF81" d="M60,10 L30,50 L50,50 L40,90 L70,40 L50,40 Z">
+                            <animate attributeName="opacity" values="0.6;1;0.6" dur="0.5s" repeatCount="indefinite" />
+                        </path>
+                    </svg>
+                </div>
+                 <div class="floating-item cable reveal" style="top: 15%; left: 40%; animation-delay: -3s;">
+                    <svg viewBox="0 0 100 50" class="element-svg">
+                        <path fill="none" stroke="#00E5FF" stroke-width="3" stroke-dasharray="5,5" d="M0,25 Q50,0 100,25" opacity="0.6" />
+                    </svg>
+                </div>
             </div>
-            <div class="floating-item tower" style="top: 70%; right: 15%; animation-delay: -2s;">
-                <svg viewBox="0 0 100 100" class="element-svg">
-                    <path fill="none" stroke="#00E5FF" stroke-width="2" d="M20,100 L50,10 L80,100 M20,80 L80,80 M35,50 L65,50 M45,25 L55,25" />
-                    <path fill="none" stroke="#F4FF81" stroke-width="1.5" d="M10,40 Q50,60 90,40 M10,60 Q50,80 90,60" />
-                </svg>
-            </div>
-            <div class="floating-item component" style="top: 80%; left: 20%; animation-delay: -4s;">
-                <svg viewBox="0 0 100 100" class="element-svg">
-                   <rect x="30" y="40" width="40" height="20" rx="5" fill="#00E5FF" />
-                   <rect x="10" y="48" width="20" height="4" fill="#F4FF81" />
-                   <rect x="70" y="48" width="20" height="4" fill="#F4FF81" />
-                   <rect x="35" y="40" width="5" height="20" fill="#0A192F" opacity="0.3" />
-                   <rect x="60" y="40" width="5" height="20" fill="#0A192F" opacity="0.3" />
-                </svg>
-            </div>
-            <div class="floating-item bolt" style="top: 30%; right: 10%; animation-delay: -1s;">
-                <svg viewBox="0 0 100 100" class="element-svg bolt-svg">
-                    <path fill="#F4FF81" d="M60,10 L30,50 L50,50 L40,90 L70,40 L50,40 Z">
-                        <animate attributeName="opacity" values="0.6;1;0.6" dur="0.5s" repeatCount="indefinite" />
-                    </path>
-                </svg>
-            </div>
-             <div class="floating-item cable" style="top: 15%; left: 40%; animation-delay: -3s;">
-                <svg viewBox="0 0 100 50" class="element-svg">
-                    <path fill="none" stroke="#00E5FF" stroke-width="3" stroke-dasharray="5,5" d="M0,25 Q50,0 100,25" opacity="0.6" />
-                </svg>
-            </div>
+
+            <!-- Main Content -->
+            <main class="content reveal">
+                <h1 class="glow-text title">BHARAT ELECTRICAL SUMMIT 2026</h1>
+                <p class="subtitle">You are Cordially Invited</p>
+                <div class="date-container reveal">
+                    <span class="date-glow">19 March 2026 – 22 March 2026</span>
+                </div>
+                <div class="details reveal">
+                    <div class="detail-item">
+                        <span class="label">Hall No:</span>
+                        <span class="value">___</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Stall No:</span>
+                        <span class="value">___</span>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="footer-note reveal">
+                Organized by KPIL & Bharat Electrical Summit Team
+            </footer>
         </div>
-
-        <!-- Main Content -->
-        <main class="content">
-            <h1 class="glow-text title">BHARAT ELECTRICAL SUMMIT 2026</h1>
-            <p class="subtitle">You are Cordially Invited</p>
-            <div class="date-container">
-                <span class="date-glow">19 March 2026 – 22 March 2026</span>
-            </div>
-            <div class="details">
-                <div class="detail-item">
-                    <span class="label">Hall No:</span>
-                    <span class="value">___</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Stall No:</span>
-                    <span class="value">___</span>
-                </div>
-            </div>
-        </main>
-
-        <footer class="footer-note">
-            Organized by KPIL & Bharat Electrical Summit Team
-        </footer>
     </div>
 
     <script src="script.js"></script>

@@ -8,15 +8,44 @@ let sparks = [];
 function init() {
     resize();
     createParticles();
+    initScrollReveal();
     animate();
 }
 
 function resize() {
     width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+    height = canvas.height = Math.max(window.innerHeight, document.documentElement.scrollHeight);
+    canvas.width = width;
+    canvas.height = height;
 }
 
 window.addEventListener('resize', resize);
+// Handle dynamic scroll height changes
+window.addEventListener('scroll', () => {
+    if (canvas.height < document.documentElement.scrollHeight) {
+        resize();
+    }
+});
+
+function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    reveals.forEach(reveal => {
+        observer.observe(reveal);
+    });
+}
 
 class Particle {
     constructor() {
@@ -54,7 +83,7 @@ class Particle {
 
 function createParticles() {
     particles = [];
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 100; i++) { // Increased particle count for scroll depth
         particles.push(new Particle());
     }
 }
@@ -64,10 +93,12 @@ function drawSpark() {
     const kpil = document.getElementById('kpil-container').getBoundingClientRect();
     const summit = document.getElementById('summit-container').getBoundingClientRect();
 
+    // Calculate position relative to fixed container or scroll if needed
+    // Using viewport-relative coordinates from getBoundingClientRect
     const startX = kpil.left + kpil.width / 2;
-    const startY = kpil.top + kpil.height / 2;
+    const startY = kpil.top + kpil.height / 2 + window.scrollY;
     const endX = summit.left + summit.width / 2;
-    const endY = summit.top + summit.height / 2;
+    const endY = summit.top + summit.height / 2 + window.scrollY;
 
     if (Math.random() > 0.9) {
         sparks.push({
