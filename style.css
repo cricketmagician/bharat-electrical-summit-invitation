@@ -63,23 +63,23 @@ body {
 
 .float-icon {
     position: absolute;
-    width: 40px; height: 40px;
-    opacity: 0.2;
+    width: 30px; height: 30px; /* Smaller for mobile */
+    opacity: 0.15;
     filter: drop-shadow(0 0 5px var(--electric-blue));
     animation: float-drift 10s ease-in-out infinite;
 }
 
 @keyframes float-drift {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(20px, -30px) rotate(5deg); }
-    66% { transform: translate(-15px, -20px) rotate(-10deg); }
+    33% { transform: translate(15px, -20px) rotate(5deg); }
+    66% { transform: translate(-10px, -15px) rotate(-10deg); }
 }
 
-.icon-tower-1 { top: 15%; left: 10%; animation-duration: 12s; }
-.icon-bolt-1 { top: 60%; right: 15%; animation-duration: 8s; opacity: 0.15; }
-.icon-resistor-1 { bottom: 20%; left: 15%; animation-duration: 14s; }
-.icon-helmet-1 { top: 40%; left: 5%; animation-duration: 9s; opacity: 0.1; }
-.icon-cable-1 { bottom: 10%; right: 10%; animation-duration: 11s; }
+.icon-tower-1 { top: 10%; left: 5%; animation-duration: 12s; }
+.icon-bolt-1 { top: 70%; right: 10%; animation-duration: 8s; opacity: 0.1; }
+.icon-resistor-1 { bottom: 15%; left: 10%; animation-duration: 14s; }
+.icon-helmet-1 { top: 35%; left: 10%; animation-duration: 9s; opacity: 0.05; }
+.icon-cable-1 { bottom: 5%; right: 5%; animation-duration: 11s; }
 
 /* WRAPPER & REVEAL SYSTEM */
 .wrapper {
@@ -88,7 +88,7 @@ body {
     width: 100vw;
 }
 
-/* COVER PAGE */
+/* COVER PAGE (Base Mobile) */
 .cover {
     position: absolute;
     width: 100%; height: 100%;
@@ -101,61 +101,53 @@ body {
 }
 
 .card {
-    padding: 60px 40px;
-    border-radius: 30px;
+    padding: 40px 20px;
+    border-radius: 24px;
     border: 1px solid rgba(0, 229, 255, 0.2);
-    background: rgba(10, 25, 47, 0.5);
+    background: rgba(10, 25, 47, 0.6);
     backdrop-filter: blur(20px);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
     text-align: center;
-    max-width: 500px;
+    max-width: 340px; /* Mobile width */
     width: 90%;
     animation: card-float 5s ease-in-out infinite;
 }
 
 @keyframes card-float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+    50% { transform: translateY(-8px); }
 }
 
 .logos-header {
     display: flex;
     justify-content: center;
-    gap: 25px;
-    margin-bottom: 30px;
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
 .logo-box {
-    width: 64px; height: 64px;
+    width: 54px; height: 54px;
     background: white;
     border-radius: 50%;
     padding: 8px;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .logo-img { width: 100%; height: 100%; object-fit: contain; }
 .logo-svg { width: 100%; height: 100%; }
 
-.eyebrow {
-    font-size: 10px;
-    letter-spacing: 6px;
-    color: var(--electric-blue);
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
 /* TITLE CINEMA */
 .title-container {
     position: relative;
     display: inline-block;
-    margin-bottom: 50px;
+    margin-bottom: 35px;
 }
 
 .hero-title {
-    font-size: 28px;
+    font-size: 20px; /* Mobile size */
     font-weight: 900;
-    line-height: 1.2;
+    line-height: 1.3;
     text-transform: uppercase;
     position: relative;
     z-index: 10;
@@ -165,9 +157,9 @@ body {
 
 .title-lightning {
     position: absolute;
-    top: -20%; left: -20%;
-    width: 140%; height: 140%;
-    background: radial-gradient(ellipse at center, rgba(0, 229, 255, 0.2) 0%, transparent 70%);
+    top: -30%; left: -10%;
+    width: 120%; height: 160%;
+    background: radial-gradient(ellipse at center, rgba(0, 229, 255, 0.25) 0%, transparent 70%);
     z-index: 1;
     pointer-events: none;
     animation: title-glow 3s ease-in-out infinite;
@@ -175,29 +167,25 @@ body {
 
 @keyframes title-glow {
     0%, 100% { opacity: 0.3; transform: scale(0.9); }
-    50% { opacity: 0.8; transform: scale(1.1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
 }
 
 .reveal-btn {
     background: var(--electric-blue);
     border: none;
-    padding: 16px 40px;
-    border-radius: 12px;
+    padding: 14px 28px;
+    border-radius: 10px;
     color: #020617;
     font-weight: 900;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     cursor: pointer;
-    box-shadow: 0 0 20px var(--electric-blue);
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.reveal-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 35px var(--electric-blue);
+    box-shadow: 0 0 15px var(--electric-blue);
+    transition: 0.3s;
+    font-size: 14px;
 }
 
 .cover.hide {
-    transform: scale(0.7) translateY(-150%);
+    transform: scale(0.85) translateY(-140%);
     opacity: 0;
     pointer-events: none;
 }
@@ -211,7 +199,7 @@ body {
     justify-content: center;
     background: radial-gradient(circle at center, #051937, #020617);
     opacity: 0;
-    transform: translateY(60px);
+    transform: translateY(40px);
     transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: 10;
 }
@@ -223,56 +211,68 @@ body {
 
 .invite-content {
     text-align: center;
-    max-width: 600px;
+    max-width: 360px;
     width: 90%;
     position: relative;
     z-index: 20;
 }
 
 .reveal-heading {
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 8px;
+    letter-spacing: 4px;
     color: var(--neon-yellow);
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     font-weight: 300;
 }
 
 .date-badge {
-    border: 1px solid rgba(0, 229, 255, 0.3);
-    padding: 35px;
-    border-radius: 24px;
-    display: inline-block;
-    margin-bottom: 60px;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    padding: 20px;
+    border-radius: 16px;
+    display: block;
+    margin-bottom: 40px;
     background: rgba(0, 229, 255, 0.03);
 }
 
+.date-label { display: block; font-size: 9px; letter-spacing: 2px; margin-bottom: 8px; opacity: 0.6; }
+
 .date-text {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 900;
     color: var(--electric-blue);
     letter-spacing: 1px;
 }
 
+.venue-info { margin-bottom: 40px; }
 .venue-name {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 900;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     background: linear-gradient(to right, #fff, var(--electric-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.venue-location { font-size: 12px; opacity: 0.8; }
 
 .stall-details {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: 40px;
-    padding-top: 40px;
+    gap: 30px;
+    margin-top: 30px;
+    padding-top: 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.s-value { font-size: 20px; font-weight: 900; color: var(--neon-yellow); }
+.s-label { font-size: 9px; opacity: 0.5; margin-bottom: 4px; }
+.s-value { font-size: 18px; font-weight: 900; color: var(--neon-yellow); }
+
+.invite-footer {
+    margin-top: 40px;
+    font-size: 8px;
+    letter-spacing: 2px;
+    opacity: 0.4;
+}
 
 /* ENERGY REVEAL LINES */
 .energy-revealer-lines {
@@ -282,20 +282,32 @@ body {
     pointer-events: none;
     z-index: 15;
     background-image: 
-        linear-gradient(90deg, transparent 49%, rgba(0, 229, 255, 0.1) 50%, transparent 51%),
-        linear-gradient(0deg, transparent 49%, rgba(0, 229, 255, 0.1) 50%, transparent 51%);
-    background-size: 100px 100px;
+        linear-gradient(90deg, transparent 49%, rgba(0, 229, 255, 0.05) 50%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, rgba(0, 229, 255, 0.05) 50%, transparent 51%);
+    background-size: 60px 60px;
     opacity: 0;
     transition: opacity 2s ease;
 }
 
 .invite.show .energy-revealer-lines {
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
-/* RESPONSIVE */
+/* DESKTOP UPGRADES (Media Queries) */
 @media(min-width: 768px) {
+    .card { max-width: 600px; padding: 70px 50px; border-radius: 40px; }
     .hero-title { font-size: 48px; }
+    .logo-box { width: 70px; height: 70px; padding: 10px; }
+    .reveal-btn { padding: 18px 45px; font-size: 16px; letter-spacing: 2px; }
+    .cover.hide { transform: scale(0.7) translateY(-150%); }
+
+    .invite-content { max-width: 700px; }
+    .reveal-heading { font-size: 16px; letter-spacing: 8px; }
+    .date-badge { padding: 40px; border-radius: 24px; }
+    .date-text { font-size: 32px; }
     .venue-name { font-size: 56px; }
-    .card { max-width: 600px; }
+    .s-value { font-size: 24px; }
+    .energy-revealer-lines { background-size: 100px 100px; }
 }
+
+/* INLINE THE CORE STYLES INTO INDEX.HTML (Updated v1.2) */
