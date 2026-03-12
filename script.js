@@ -4,7 +4,9 @@ const ctx = canvas.getContext('2d');
 let width, height;
 let particles = [];
 let sparks = [];
+let titleSparks = [];
 let animationActive = true;
+let isRevealed = false;
 
 function init() {
     resize();
@@ -19,8 +21,11 @@ function resize() {
 
 window.addEventListener('resize', resize);
 
-// REVEAL ANIMATION LOGIC
+// REVEAL LOGIC
 function openInvite() {
+    if (isRevealed) return;
+    isRevealed = true;
+
     const cover = document.getElementById('cover');
     const invite = document.getElementById('invite');
 
@@ -28,14 +33,13 @@ function openInvite() {
     
     setTimeout(() => {
         invite.classList.add('show');
-        // Optionally slow down particles or change mood after reveal
     }, 400);
 
-    // Stop sparks after reveal to focus on details
+    // Fade out intensive sparks to focus on content
     setTimeout(() => {
         animationActive = false;
-        ctx.clearRect(0, 0, width, height);
-    }, 1500);
+        // Optionally keep particles but clear sparks
+    }, 2000);
 }
 
 class Particle {
@@ -45,11 +49,11 @@ class Particle {
     reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 1.2 + 0.3;
-        this.color = Math.random() > 0.5 ? '#00E5FF' : '#F4FF81'; 
-        this.speedX = (Math.random() - 0.5) * 0.3;
-        this.speedY = (Math.random() - 0.5) * 0.3;
-        this.opacity = Math.random() * 0.3 + 0.05;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.color = Math.random() > 0.6 ? '#00E5FF' : '#F4FF81'; 
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.4 + 0.1;
     }
     update() {
         this.x += this.speedX;
@@ -67,13 +71,14 @@ class Particle {
 
 function createParticles() {
     particles = [];
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 70; i++) {
         particles.push(new Particle());
     }
 }
 
-function drawSpark() {
-    if (!animationActive) return;
+// CINEMATIC BEAM BETWEEN LOGOS
+function drawPowerBeam() {
+    if (!animationActive || isRevealed) return;
 
     const kpil = document.getElementById('logo-kpil');
     const summit = document.getElementById('logo-summit');
@@ -87,10 +92,19 @@ function drawSpark() {
     const x2 = b2.left + b2.width / 2;
     const y2 = b2.top + b2.height / 2;
 
-    if (Math.random() > 0.94) {
+    // Persistent energy pulse
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.strokeStyle = 'rgba(0, 229, 255, 0.15)';
+    ctx.lineWidth = 4;
+    ctx.stroke();
+
+    // Random sparks
+    if (Math.random() > 0.90) {
         sparks.push({
-            timer: 8,
-            points: createLightningPoints(x1, y1, x2, y2)
+            timer: 12,
+            points: createLightningPoints(x1, y1, x2, y2, 40)
         });
     }
 
@@ -101,10 +115,14 @@ function drawSpark() {
         ctx.lineTo(x2, y2);
         
         ctx.strokeStyle = '#00E5FF';
-        ctx.lineWidth = 1.2;
-        ctx.shadowBlur = 8;
+        ctx.lineWidth = 2;
+        ctx.shadowBlur = 15;
         ctx.shadowColor = '#00E5FF';
-        ctx.globalAlpha = spark.timer / 8;
+        ctx.globalAlpha = spark.timer / 12;
+        ctx.stroke();
+
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 0.5;
         ctx.stroke();
 
         spark.timer--;
@@ -112,39 +130,90 @@ function drawSpark() {
     });
 }
 
-function createLightningPoints(x1, y1, x2, y2) {
+// TITLE LIGHTNING EFFECTS
+function drawTitleLightning() {
+    if (!animationActive || isRevealed) return;
+
+    const titleContainer = document.querySelector('.title-container');
+    if (!titleContainer) return;
+
+    const rect = titleContainer.getBoundingClientRect();
+    
+    if (Math.random() > 0.96) {
+        // Create a spark around the title border
+        const side = Math.floor(Math.random() * 4);
+        let x1, y1, x2, y2;
+
+        if (side === 0) { // Top
+            x1 = rect.left + Math.random() * rect.width;
+            y1 = rect.top;
+            x2 = x1 + (Math.random() - 0.5) * 50;
+            y2 = y1 - 20;
+        } else if (side === 1) { // Bottom
+            x1 = rect.left + Math.random() * rect.width;
+            y1 = rect.bottom;
+            x2 = x1 + (Math.random() - 0.5) * 50;
+            y2 = y1 + 20;
+        } else { // Sides
+             x1 = side === 2 ? rect.left : rect.right;
+             y1 = rect.top + Math.random() * rect.height;
+             x2 = x1 + (side === 2 ? -20 : 20);
+             y2 = y1 + (Math.random() - 0.5) * 50;
+        }
+
+        titleSparks.push({
+            timer: 8,
+            points: createLightningPoints(x1, y1, x2, y2, 10)
+        });
+    }
+
+    titleSparks.forEach((spark, index) => {
+        ctx.beginPath();
+        ctx.moveTo(spark.points[0].x, spark.points[0].y);
+        spark.points.forEach(p => ctx.lineTo(p.x, p.y));
+        
+        ctx.strokeStyle = '#F4FF81'; // Neon Yellow for title sparks
+        ctx.lineWidth = 1;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#F4FF81';
+        ctx.globalAlpha = spark.timer / 8;
+        ctx.stroke();
+
+        spark.timer--;
+        if (spark.timer <= 0) titleSparks.splice(index, 1);
+    });
+}
+
+function createLightningPoints(x1, y1, x2, y2, offset) {
     const points = [];
     const segments = 5;
     const dx = (x2 - x1) / segments;
     const dy = (y2 - y1) / segments;
 
+    points.push({x: x1, y: y1});
     for (let i = 1; i < segments; i++) {
         points.push({
-            x: x1 + dx * i + (Math.random() - 0.5) * 30,
-            y: y1 + dy * i + (Math.random() - 0.5) * 30
+            x: x1 + dx * i + (Math.random() - 0.5) * offset,
+            y: y1 + dy * i + (Math.random() - 0.5) * offset
         });
     }
+    points.push({x: x2, y: y2});
     return points;
 }
 
 function animate() {
-    if (!animationActive && sparks.length === 0) {
-        // Just draw particles for atmosphere
-         ctx.clearRect(0, 0, width, height);
-         particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
-        requestAnimationFrame(animate);
-        return;
-    }
-
     ctx.clearRect(0, 0, width, height);
+
     particles.forEach(p => {
         p.update();
         p.draw();
     });
-    drawSpark();
+
+    if (animationActive) {
+        drawPowerBeam();
+        drawTitleLightning();
+    }
+
     requestAnimationFrame(animate);
 }
 

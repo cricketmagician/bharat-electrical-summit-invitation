@@ -10,8 +10,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Background Layers -->
+    <div class="bg-pulse-layer"></div>
     <div class="particles"></div>
     <canvas id="spark-canvas"></canvas>
+
+    <!-- Floating Industry Icons -->
+    <div class="atmospheric-layer">
+        <div class="float-icon icon-tower-1"><svg viewBox="0 0 100 100"><path fill="none" stroke="#00E5FF" stroke-width="2" d="M20,100 L50,10 L80,100 M20,80 L80,80 M35,50 L65,50" /></svg></div>
+        <div class="float-icon icon-bolt-1"><svg viewBox="0 0 100 100"><path fill="#F4FF81" d="M60,10 L30,50 L50,50 L40,90 L70,40 L50,40 Z" /></svg></div>
+        <div class="float-icon icon-resistor-1"><svg viewBox="0 0 100 100"><path fill="none" stroke="#00E5FF" stroke-width="3" d="M10,50 L30,50 L35,30 L45,70 L55,30 L65,70 L70,50 L90,50" /></svg></div>
+        <div class="float-icon icon-helmet-1"><svg viewBox="0 0 100 100"><path fill="#00E5FF" d="M10,60 Q10,10 50,10 Q90,10 90,60 L95,65 L10,65 Z" /></svg></div>
+        <div class="float-icon icon-cable-1"><svg viewBox="0 0 100 100"><path fill="none" stroke="#F4FF81" stroke-width="2" stroke-dasharray="4,4" d="M10,80 Q50,20 90,80" /></svg></div>
+    </div>
 
     <div class="wrapper">
         <!-- COVER PAGE -->
@@ -28,8 +39,14 @@
                         </svg>
                     </div>
                 </div>
+                
                 <p class="eyebrow">A SYNERGY OF POWER</p>
-                <h1 class="hero-title">BHARAT ELECTRICAL<br>SUMMIT 2026</h1>
+                
+                <div class="title-container">
+                    <div class="title-lightning"></div>
+                    <h1 class="hero-title">BHARAT ELECTRICAL<br>SUMMIT 2026</h1>
+                </div>
+
                 <button class="reveal-btn" onclick="openInvite()">
                     OPEN INVITATION
                     <span class="btn-glow"></span>
@@ -37,8 +54,9 @@
             </div>
         </section>
 
-        <!-- INVITATION DETAILS PAGE (Reveal below) -->
+        <!-- INVITATION DETAILS PAGE -->
         <section class="invite" id="invite">
+            <div class="energy-revealer-lines"></div>
             <div class="invite-content">
                 <h2 class="reveal-heading">You Are Cordially Invited</h2>
                 
