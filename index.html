@@ -10,101 +10,73 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="story-container">
-        <!-- Floating Energy Particles (Global) -->
-        <div class="particles"></div>
-        <canvas id="spark-canvas"></canvas>
+    <div class="particles"></div>
+    <canvas id="spark-canvas"></canvas>
 
-        <!-- Section 1: The Vision -->
-        <section class="story-section hero-section reveal">
-            <div class="section-content">
-                <p class="eyebrow">A NEW ERA OF ENERGY</p>
-                <h1 class="story-heading">Experience the<br><span class="gradient-text">Future of Power.</span></h1>
-                <div class="scroll-indicator">
-                    <span>Scroll to explore</span>
-                    <div class="arrow"></div>
+    <div class="invite-container">
+        <div class="invite-poster">
+            <!-- Top Logos -->
+            <div class="logos-header">
+                <div class="logo-box" id="kpil-container">
+                    <img src="assets/kpil_logo_new.png" alt="KPIL Logo" class="logo-img">
                 </div>
-            </div>
-        </section>
-
-        <!-- Section 2: The Connection -->
-        <section class="story-section connection-section reveal">
-            <div class="section-content">
-                <header class="logos-header">
-                    <div class="logo-box" id="kpil-container">
-                        <img src="assets/kpil_logo_new.png" alt="KPIL Logo" class="premium-logo new-logo">
-                        <span class="logo-label">KPIL</span>
-                    </div>
-                    <div class="logo-box" id="summit-container">
-                        <div class="summit-logo-premium">
-                            <svg viewBox="0 0 100 100" class="logo-svg">
-                                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#summit-grad)" stroke-width="2"/>
-                                <path d="M50 20 L40 50 L50 50 L45 80 L65 45 L55 45 Z" fill="#F4FF81" />
-                                <defs>
-                                    <linearGradient id="summit-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#F4FF81;stop-opacity:1" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                            <span class="logo-label summit-label">BHARAT SUMMIT</span>
-                        </div>
-                    </div>
-                    <div class="energy-line"></div>
-                </header>
-                <h2 class="story-subheading">A Powerful Synergy.</h2>
-                <p class="story-p">Kalpataru Projects meets Bharat Electrical Summit for an unprecedented celebration of innovation.</p>
-            </div>
-        </section>
-
-        <!-- Section 3: The Summit -->
-        <section class="story-section title-section reveal">
-            <div class="section-content">
-                <h1 class="glow-text main-title">BHARAT ELECTRICAL SUMMIT 2026</h1>
-                <p class="invitation-text">You are Cordially Invited</p>
-            </div>
-        </section>
-
-        <!-- Section 4: The Details -->
-        <section class="story-section detail-section reveal">
-            <div class="section-content">
-                <div class="glass-card">
-                    <div class="date-container">
-                        <span class="date-glow">19 March 2026 – 22 March 2026</span>
-                    </div>
-                    <div class="details">
-                        <div class="detail-item">
-                            <span class="label">LOCATION</span>
-                            <span class="value">BHARAT MANDAPAM</span>
-                        </div>
-                        <hr class="detail-divider">
-                        <div class="detail-item">
-                            <span class="label">HALL NO</span>
-                            <span class="value">___</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="label">STALL NO</span>
-                            <span class="value">___</span>
-                        </div>
+                <div class="logo-box" id="summit-container">
+                    <div class="summit-svg-container">
+                        <svg viewBox="0 0 100 100" class="logo-svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#summit-grad)" stroke-width="2"/>
+                            <path d="M50 20 L40 50 L50 50 L45 80 L65 45 L55 45 Z" fill="#F4FF81" />
+                            <defs>
+                                <linearGradient id="summit-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#F4FF81;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
                     </div>
                 </div>
+                <div class="energy-line"></div>
             </div>
-        </section>
 
-        <!-- Section 5: The Assets (Floating background decor) -->
-        <div class="floating-elements-container">
-            <div class="floating-item helmet" style="top: 15%; left: 5%;">
-                <svg viewBox="0 0 100 100" class="element-svg"><path fill="#00E5FF" d="M10,60 Q10,10 50,10 Q90,10 90,60 L95,65 L10,65 Z" /></svg>
+            <!-- Title -->
+            <h1 class="main-title">BHARAT ELECTRICAL<br>SUMMIT 2026</h1>
+
+            <!-- Invitation Text -->
+            <p class="subtitle">YOU ARE CORDIALLY INVITED</p>
+
+            <!-- Date Highlight -->
+            <div class="date-box">
+                19 March – 22 March 2026
             </div>
-            <div class="floating-item tower" style="top: 60%; right: 5%;">
-                <svg viewBox="0 0 100 100" class="element-svg"><path fill="none" stroke="#00E5FF" stroke-width="2" d="M20,100 L50,10 L80,100 M20,80 L80,80 M35,50 L65,50" /></svg>
+
+            <!-- Hall + Stall Layout -->
+            <div class="event-details">
+                <div class="detail-item">
+                    <span class="label">Hall No</span>
+                    <span class="value">___</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Stall No</span>
+                    <span class="value">___</span>
+                </div>
             </div>
+
+            <!-- Floating Illustration Elements (Small icons) -->
+            <div class="floating-icons">
+                <div class="icon-wrap helmet" style="top: 15%; left: 8%;">
+                    <svg viewBox="0 0 100 100" class="icon"><path fill="#00E5FF" d="M10,60 Q10,10 50,10 Q90,10 90,60 L95,65 L10,65 Z" /></svg>
+                </div>
+                <div class="icon-wrap tower" style="bottom: 12%; right: 10%;">
+                    <svg viewBox="0 0 100 100" class="icon"><path fill="none" stroke="#00E5FF" stroke-width="3" d="M20,100 L50,10 L80,100 M20,80 L80,80 M35,50 L65,50" /></svg>
+                </div>
+                <div class="icon-wrap bolt" style="top: 35%; right: 5%;">
+                    <svg viewBox="0 0 100 100" class="icon"><path fill="#F4FF81" d="M60,10 L30,50 L50,50 L40,90 L70,40 L50,40 Z" /></svg>
+                </div>
+            </div>
+
+            <footer class="poster-footer">
+                @BHARAT ELECTRICAL SUMMIT 2026
+            </footer>
         </div>
-
-        <footer class="footer-note">
-            BHARAT ELECTRICAL SUMMIT | KPIL 2026
-        </footer>
-    </div>
     </div>
 
     <script src="script.js"></script>
